@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600">
+	
+	<fx:Script>
+		<![CDATA[
+			private var urlTarget:String;
+			
+			protected function jqueryClickHandler(event:MouseEvent):void
+			{
+				if(ExternalInterface.available)
+				{
+					ExternalInterface.call("popUp", [urlTarget]);
+				}
+			}
+			
+			protected function moveBootstrapHandler(event:MouseEvent):void
+			{
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Form>
+		
+		<s:FormItem label="Utilizando JQuery PopUp">
+			<s:TextInput prompt="URL Desejada" text="@{urlTarget}"/>
+			<s:Button label="Click Me!!" click="jqueryClickHandler(event)"/>
+		</s:FormItem>
+		<s:FormItem label="Utilizando Move + Site separado">
+			<s:Button label="Click Me!!" click="moveBootstrapHandler(event)"/>
+		</s:FormItem>
+	</s:Form>
+	
+</s:Application>
